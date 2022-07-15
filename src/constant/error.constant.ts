@@ -9,6 +9,8 @@ export class ErrorConstant {
     public static AUTH__USER_EXIST = new ErrorConstant("20002", "auth.user_exist")
     public static AUTH__USER_NOT_FOUND = new ErrorConstant("20003", "auth.user_not_found")
     public static AUTH__PASSWORD_INCORRECT = new ErrorConstant("20004", "auth.password_incorrect")
+    public static AUTH__OTP_INCORRECT = new ErrorConstant("20005", "auth.otp_incorrect")
+    public static AUTH__TOTP_IS_ALREADY_REGISTERED = new ErrorConstant("20006", "auth.totp_is_already_registered")
 
     public static WALLET__PRICE_IS_NOT_UPDATED = new ErrorConstant("30001", "wallet.price_is_not_updated")
     public static WALLET__WALLET_NOT_FOUND = new ErrorConstant("30001", "wallet.wallet_not_found")

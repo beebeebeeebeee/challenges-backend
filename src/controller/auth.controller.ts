@@ -53,4 +53,14 @@ export class AuthController {
     return response.status(200).send(new GenericResponseDto<RegisterTotpResponseModel>(ResponseStatus.SUCCESS, responsePayload).getResponse())
   }
 
+  @Post("/login/totp")
+  public async loginTotp(@Body() loginTotpRequestPayload: LoginTotpRequestModel, @Res() response: Response): Promise<Response> {
+    const loginResponsePayload = await this.authService.login(loginTotpRequestPayload as LoginRequestModel);
+    if (loginResponsePayload instanceof ErrorConstant) {
+      return response.status(400).send(new GenericResponseDto(ResponseStatus.ERROR, null, loginResponsePayload).getResponse())
+    }
+
+    return response.status(200).send(new GenericResponseDto(ResponseStatus.SUCCESS, loginResponsePayload).getResponse())
+  }
+
 }
