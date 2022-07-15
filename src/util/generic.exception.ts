@@ -11,7 +11,10 @@ export class GenericExceptionFilter implements ExceptionFilter {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse<Response>();
         const request = ctx.getRequest<Request>();
-        const status = exception.getStatus();
+        let status = 400
+        try {
+            status = exception?.getStatus();
+        } catch (e) { }
         const message = exception?.response?.message
 
         if (exception instanceof BadRequestException && message != null && JSON.stringify(Object.keys(message[0])) == JSON.stringify(['target', 'value', 'property', 'children', 'constraints'])) {
